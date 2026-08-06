@@ -1,0 +1,17 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+/** True once the page has been scrolled past `threshold` px. SSR-safe (starts false). */
+export function useScrolled(threshold = 200): boolean {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [threshold]);
+
+  return scrolled;
+}
