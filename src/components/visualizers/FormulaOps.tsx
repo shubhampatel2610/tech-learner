@@ -85,7 +85,7 @@ export function FormulaOps() {
       </div>
 
       <div className="overflow-x-auto rounded-card border border-border bg-[#0b0d11] p-4">
-        <div className="mb-2 text-[10px] text-faint">Pascal's triangle - C(n, r) is row n, position r</div>
+        <div className="mb-2 text-[10px] text-faint">Pascal&apos;s triangle - C(n, r) is row n, position r</div>
         <div className="w-max min-w-full space-y-1">
           {rows.map((row, i) => (
             <div key={i} className="flex justify-center gap-1.5">
