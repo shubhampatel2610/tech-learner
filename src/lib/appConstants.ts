@@ -4,32 +4,23 @@
  */
 
 export const APP = {
-  name: 'DSA Learner',
+  name: 'TechPath',
   tagline: 'Learn Data Structures & Algorithms the way engineers actually think.',
   description:
     'An interactive, engineering-focused platform to learn, visualize, and revise Data Structures & Algorithms from first principles to interview-ready.',
-  repoUrl: 'https://github.com/your-org/dsa-learner',
+  repoUrl: 'https://github.com/your-org/techpath',
   version: '1.0.0',
-} as const;
-
-export const XP = {
-  perSectionComplete: 10,
-  perQuizQuestion: 5,
-  perTopicComplete: 50,
-  dailyGoalMinutes: 30,
 } as const;
 
 export const ROUTES = {
   home: '/',
-  dashboard: '/dashboard',
   topic: (slug: string) => `/topics/${slug}`,
 } as const;
 
-export const STORAGE_KEY = 'dsa-learner:v1';
+export const STORAGE_KEY = 'techpath:v1';
 
 export const NAV_LINKS = [
-  { label: 'Learn', href: ROUTES.home, icon: 'pi pi-book' },
-  { label: 'Dashboard', href: ROUTES.dashboard, icon: 'pi pi-chart-bar' },
+  { label: 'DSA', href: ROUTES.home, icon: 'pi pi-book' },
 ] as const;
 
 export const DIFFICULTY_META = {
@@ -42,10 +33,4 @@ export const PROBLEM_DIFFICULTY_META = {
   Easy: 'success',
   Medium: 'warning',
   Hard: 'danger',
-} as const;
-
-export const EMPTY = {
-  noBookmarks: 'No bookmarks yet. Tap the bookmark icon on any topic to pin it here.',
-  noRecent: 'Nothing visited yet. Open a topic to start your streak.',
-  quizDone: 'Quiz complete. Review the explanations, then try again to beat your best.',
 } as const;

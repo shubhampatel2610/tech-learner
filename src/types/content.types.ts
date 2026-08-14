@@ -84,30 +84,6 @@ export interface FlashCard {
   back: string;
 }
 
-export type QuizQuestion =
-  | {
-      id: string;
-      type: 'mcq';
-      prompt: string;
-      options: string[];
-      answerIndex: number;
-      explanation: string;
-    }
-  | {
-      id: string;
-      type: 'boolean';
-      prompt: string;
-      answer: boolean;
-      explanation: string;
-    }
-  | {
-      id: string;
-      type: 'fill';
-      prompt: string;
-      answer: string;
-      explanation: string;
-    };
-
 export interface PracticeProblem {
   id: string;
   title: string;
@@ -181,7 +157,6 @@ export interface Topic {
   relatedSlugs: string[];
 
   flashcards: FlashCard[];
-  quiz: QuizQuestion[];
   practice: PracticeProblem[];
   faqs: FaqItem[];
   references: { label: string; url: string }[];

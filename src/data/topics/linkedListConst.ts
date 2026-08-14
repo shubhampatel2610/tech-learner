@@ -292,39 +292,6 @@ def reverse_list(head):
     { id: 'll-f6', front: 'Space complexity of merging two sorted lists?', back: 'O(1) extra - nodes are relinked in place, not copied into a new list.' },
   ],
 
-  quiz: [
-    {
-      id: 'll-q1',
-      type: 'mcq',
-      prompt: "In Floyd's cycle detection, what happens to the gap between slow and fast once both are inside the cycle?",
-      options: ['It stays constant', 'It shrinks by 1 each iteration', 'It doubles each iteration', 'It is undefined'],
-      answerIndex: 1,
-      explanation: 'Fast gains exactly one extra step on slow per iteration, so the gap shrinks by 1 each time - guaranteeing a collision within one lap of the cycle.',
-    },
-    {
-      id: 'll-q2',
-      type: 'boolean',
-      prompt: 'Deleting a node from a singly linked list, given a reference to that node (not its predecessor), is always possible in O(1).',
-      answer: false,
-      explanation: 'It is only possible when the node is not the tail (copy the next node\'s value forward and skip it). If it IS the tail, there is no next node to borrow from, so you need the predecessor.',
-    },
-    {
-      id: 'll-q3',
-      type: 'mcq',
-      prompt: 'Which sort is most natural to implement directly on a linked list, and why?',
-      options: ['Quick sort - because partitioning is easy', 'Merge sort - because it never needs random access', 'Counting sort - because keys are small', 'Selection sort - because swapping is O(1)'],
-      answerIndex: 1,
-      explanation: 'Merge sort only ever needs sequential access and a merge step that relinks pointers - it never needs to jump to an arbitrary index, unlike quicksort\'s pivot selection.',
-    },
-    {
-      id: 'll-q4',
-      type: 'fill',
-      prompt: "Fill in: the hash-set approach to cycle detection costs O(n) space, while Floyd's algorithm costs O(___) space.",
-      answer: 'O(1)',
-      explanation: "Floyd's algorithm only needs two pointers, regardless of list length - the core reason it's preferred over a visited-set.",
-    },
-  ],
-
   practice: [
     {
       id: 'll-p1',

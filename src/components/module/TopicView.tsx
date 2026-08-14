@@ -1,12 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import type { Topic } from '@/types/content.types';
-import { useAppDispatch } from '@/store/hooks';
-import { visitTopic } from '@/store/slices/progressSlice';
-import { useTopicProgress } from '@/hooks/useTopicProgress';
 import { getTopic } from '@/data/topics';
 import { ROUTES, DIFFICULTY_META } from '@/lib/appConstants';
 import { formatMinutes, cn } from '@/lib/utils';
@@ -19,19 +14,12 @@ import { VisualizerHost } from '@/components/visualizers/VisualizerHost';
 import { ComplexityTable } from '@/components/module/ComplexityTable';
 import { DryRunStepper } from '@/components/module/DryRunStepper';
 import { Flashcards } from '@/components/module/Flashcards';
-import { Quiz } from '@/components/module/Quiz';
 import { PracticeList } from '@/components/module/PracticeList';
 
 type Tone = 'success' | 'warning' | 'danger';
 
 export function TopicView({ topic }: { topic: Topic }) {
-  const dispatch = useAppDispatch();
-  const progress = useTopicProgress(topic.slug, topic.sections.length);
   const diffTone = DIFFICULTY_META[topic.difficulty].color as Tone;
-
-  useEffect(() => {
-    dispatch(visitTopic(topic.slug));
-  }, [dispatch, topic.slug]);
 
   return (
     <div className="mx-auto max-w-7xl space-y-8">
@@ -41,29 +29,14 @@ export function TopicView({ topic }: { topic: Topic }) {
           <i className="pi pi-arrow-left text-[10px]" aria-hidden /> All topics
         </Link>
 
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-accent-gradient text-[#04120d]">
-              <i className={`${topic.icon} text-lg`} aria-hidden />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-text sm:text-2xl">{topic.title}</h1>
-              <p className="mt-1 text-sm text-muted">{topic.tagline}</p>
-            </div>
+        <div className="flex gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-accent-gradient text-[#04120d]">
+            <i className={`${topic.icon} text-lg`} aria-hidden />
           </div>
-
-          <button
-            onClick={progress.onToggleBookmark}
-            className={cn(
-              'flex h-9 w-9 shrink-0 items-center justify-center rounded-md border transition-colors',
-              progress.bookmarked
-                ? 'border-accent/40 bg-accent/10 text-accent'
-                : 'border-border bg-surface-2 text-muted hover:text-text',
-            )}
-            aria-label={progress.bookmarked ? 'Remove bookmark' : 'Bookmark topic'}
-          >
-            <i className={progress.bookmarked ? 'pi pi-bookmark-fill' : 'pi pi-bookmark'} aria-hidden />
-          </button>
+          <div>
+            <h1 className="text-xl font-bold text-text sm:text-2xl">{topic.title}</h1>
+            <p className="mt-1 text-sm text-muted">{topic.tagline}</p>
+          </div>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-1.5">
@@ -74,21 +47,6 @@ export function TopicView({ topic }: { topic: Topic }) {
           {topic.tags.map((t) => (
             <span key={t} className="chip">{t}</span>
           ))}
-        </div>
-
-        {/* Progress bar */}
-        <div className="mt-4 flex items-center gap-3">
-          <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-2">
-            <motion.div
-              className="h-full rounded-full bg-accent-gradient"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress.percent}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-          <span className="font-mono text-xs text-muted">
-            {progress.completedCount}/{progress.totalSections} · {progress.percent}%
-          </span>
         </div>
       </div>
 
@@ -108,7 +66,6 @@ export function TopicView({ topic }: { topic: Topic }) {
       <section className="space-y-3">
         <SectionHeading icon="pi pi-book" title="Concepts" />
         {topic.sections.map((section, i) => {
-          const done = progress.isSectionDone(section.id);
           return (
             <SectionCard key={section.id} as="article">
               <div className="mb-2 flex items-start justify-between gap-3">
@@ -116,18 +73,6 @@ export function TopicView({ topic }: { topic: Topic }) {
                   <span className="font-mono text-xs text-faint">{String(i + 1).padStart(2, '0')}</span>
                   {section.heading}
                 </h3>
-                <button
-                  onClick={() => progress.onToggleSection(section.id)}
-                  className={cn(
-                    'flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors',
-                    done
-                      ? 'border-success/40 bg-success/10 text-success'
-                      : 'border-border text-faint hover:text-text',
-                  )}
-                >
-                  <i className={done ? 'pi pi-check-circle' : 'pi pi-circle'} aria-hidden />
-                  {done ? 'Completed' : 'Mark done'}
-                </button>
               </div>
               <Markdown>{section.body}</Markdown>
               {section.visualizer && section.visualizer !== 'none' && (
@@ -217,12 +162,6 @@ export function TopicView({ topic }: { topic: Topic }) {
       <section className="space-y-3">
         <SectionHeading icon="pi pi-clone" title="Flashcards" subtitle="Flip to test recall, mark cards as you learn them." />
         <Flashcards cards={topic.flashcards} />
-      </section>
-
-      {/* Quiz */}
-      <section className="space-y-3">
-        <SectionHeading icon="pi pi-question-circle" title="Quiz yourself" subtitle="Instant feedback with explanations. Earn XP for correct answers." />
-        <Quiz slug={topic.slug} questions={topic.quiz} />
       </section>
 
       {/* Practice */}

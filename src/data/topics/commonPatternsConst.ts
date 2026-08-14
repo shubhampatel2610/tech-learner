@@ -244,39 +244,6 @@ The decision rule: subproblems independent → divide & conquer. Subproblems ove
     { id: 'p-f7', front: 'Merge Intervals - what is the first step, always?', back: 'Sort by start time. Without sorting, the single linear merge pass does not work.' },
   ],
 
-  quiz: [
-    {
-      id: 'p-q1',
-      type: 'mcq',
-      prompt: 'A problem asks for the longest substring containing at most 2 distinct characters. Which pattern?',
-      options: ['Two Pointers on a sorted array', 'Sliding Window', 'Backtracking', 'Merge Intervals'],
-      answerIndex: 1,
-      explanation: '"Longest contiguous run satisfying a condition" is the signature of Sliding Window - expand right, shrink left when the distinct-count exceeds 2.',
-    },
-    {
-      id: 'p-q2',
-      type: 'boolean',
-      prompt: 'Divide & Conquer requires memoization to be efficient, just like Dynamic Programming.',
-      answer: false,
-      explanation: 'D&C subproblems are independent (no overlap), so there is nothing to reuse - memoization would add overhead for no benefit. That independence is exactly what distinguishes it from DP.',
-    },
-    {
-      id: 'p-q3',
-      type: 'mcq',
-      prompt: 'You need the 5 smallest values out of a 10-million-element stream. Best complexity approach?',
-      options: ['Sort everything, O(n log n)', 'Max-heap of size 5, O(n log 5)', 'Linear scan keeping a running min, O(n)', 'Backtracking over all subsets'],
-      answerIndex: 1,
-      explanation: 'A size-5 max-heap gives O(n log k) with k=5 - far cheaper than sorting 10 million elements. (A single running min only finds 1 value, not 5.)',
-    },
-    {
-      id: 'p-q4',
-      type: 'fill',
-      prompt: 'Name the pointer pattern that finds a cycle in a linked list using O(1) extra space.',
-      answer: "Fast & Slow Pointer (Floyd's)",
-      explanation: "Also called Floyd's cycle detection / tortoise and hare - two pointers at different speeds meet only if a cycle exists.",
-    },
-  ],
-
   practice: [
     {
       id: 'p-p1',

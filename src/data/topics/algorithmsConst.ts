@@ -284,39 +284,6 @@ def min_eating_speed(piles, h):
     { id: 'a-f7', front: 'Counting sort complexity and limit?', back: 'O(n + k) time/space, k = value range. Only viable for small bounded integer keys.' },
   ],
 
-  quiz: [
-    {
-      id: 'a-q1',
-      type: 'mcq',
-      prompt: 'Which sort guarantees O(n log n) in the worst case AND uses O(1) extra space?',
-      options: ['Merge sort', 'Quick sort', 'Heap sort', 'Counting sort'],
-      answerIndex: 2,
-      explanation: 'Heap sort is O(n log n) worst-case and in-place (O(1)). Merge needs O(n); quick has an O(n²) worst case.',
-    },
-    {
-      id: 'a-q2',
-      type: 'boolean',
-      prompt: 'Binary search can be applied to an unsorted array if you only search once.',
-      answer: false,
-      explanation: 'Binary search requires order. On unsorted data it may miss the target entirely.',
-    },
-    {
-      id: 'a-q3',
-      type: 'mcq',
-      prompt: 'You must sort objects and preserve the order of equal keys. Which do you avoid?',
-      options: ['Merge sort', 'Insertion sort', 'Selection sort', 'Counting sort'],
-      answerIndex: 2,
-      explanation: 'Selection sort is not stable - it can reorder equal elements. Merge, insertion, and counting are stable.',
-    },
-    {
-      id: 'a-q4',
-      type: 'fill',
-      prompt: 'Binary search on a sorted array of ~1,000,000 elements takes about how many comparisons? (nearest power-of-two exponent)',
-      answer: '20',
-      explanation: 'log₂(1,000,000) ≈ 20. Each step halves the space.',
-    },
-  ],
-
   practice: [
     {
       id: 'a-p1',

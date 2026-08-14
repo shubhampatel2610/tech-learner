@@ -77,5 +77,5 @@ export function getTopic(slug: string): Topic | undefined {
   return FULL_TOPICS.find((t) => t.slug === slug);
 }
 
-/** Total number of sections across full topics - powers dashboard stats. */
+/** Total number of sections across full topics - powers the home page stat. */
 export const TOTAL_SECTIONS = FULL_TOPICS.reduce((n, t) => n + t.sections.length, 0);

@@ -264,39 +264,6 @@ The diagnostic question worth asking every time: **"do smaller subproblems repea
     { id: 'dp-f7', front: 'LCS recurrence when characters match vs don\'t match?', back: 'Match: dp[i][j] = dp[i-1][j-1] + 1 (extend the diagonal). No match: dp[i][j] = max(dp[i-1][j], dp[i][j-1]) (best of dropping a character from either string).' },
   ],
 
-  quiz: [
-    {
-      id: 'dp-q1',
-      type: 'mcq',
-      prompt: 'What is the single property that makes a problem solvable with DP (rather than plain divide & conquer)?',
-      options: ['It has a recursive structure', 'Its subproblems overlap', 'It involves an array', 'It has a greedy-choice property'],
-      answerIndex: 1,
-      explanation: 'Both DP and divide & conquer break problems into subproblems. DP specifically pays off when those subproblems overlap and can be cached; if they are independent, memoization adds nothing and D&C is the right frame.',
-    },
-    {
-      id: 'dp-q2',
-      type: 'boolean',
-      prompt: 'Memoization and tabulation always produce the same asymptotic time complexity for a given DP problem.',
-      answer: true,
-      explanation: 'Both compute the exact same set of distinct subproblems exactly once - the only difference is the order (recursive/on-demand vs iterative/precomputed), not the total amount of work.',
-    },
-    {
-      id: 'dp-q3',
-      type: 'mcq',
-      prompt: 'A DP recurrence dp[i] depends only on dp[i-1] and dp[i-2]. What is the minimum extra space needed for a bottom-up solution?',
-      options: ['O(n)', 'O(log n)', 'O(1) - two rolling variables', 'O(n²)'],
-      answerIndex: 2,
-      explanation: 'Since only the last two values are ever needed, the full array can be replaced with two rolling variables, dropping space from O(n) to O(1) while keeping O(n) time.',
-    },
-    {
-      id: 'dp-q4',
-      type: 'fill',
-      prompt: 'Fill in: the state for the Longest Common Subsequence of strings of length n and m is typically dp[i][j], giving a table of size O(___).',
-      answer: 'O(n · m)',
-      explanation: 'One dimension per string\'s prefix length - the table has (n+1) × (m+1) entries, giving O(n·m) time and space.',
-    },
-  ],
-
   practice: [
     {
       id: 'dp-p1',

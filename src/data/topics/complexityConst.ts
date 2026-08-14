@@ -285,39 +285,6 @@ const total = (a) => a.reduce((s, x) => s + x, 0); // O(n)`,
     { id: 'c-f6', front: 'Amortized vs average-case?', back: 'Amortized averages cost over a sequence of ops (worst-case guarantee); average-case averages over input distribution.' },
   ],
 
-  quiz: [
-    {
-      id: 'c-q1',
-      type: 'mcq',
-      prompt: 'What is the time complexity of two independent (non-nested) loops, each over n?',
-      options: ['O(n²)', 'O(n)', 'O(2n) → O(n)', 'O(log n)'],
-      answerIndex: 2,
-      explanation: 'Sequential loops add: n + n = 2n, and constants drop, giving O(n). Nesting would be required for O(n²).',
-    },
-    {
-      id: 'c-q2',
-      type: 'boolean',
-      prompt: 'An O(n) algorithm is always faster than an O(n²) algorithm for every input size.',
-      answer: false,
-      explanation: 'Only for sufficiently large n. Constant factors can make O(n²) win on small inputs.',
-    },
-    {
-      id: 'c-q3',
-      type: 'mcq',
-      prompt: 'Which class describes halving the search space each step?',
-      options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
-      answerIndex: 1,
-      explanation: 'Repeated halving reaches 1 in log₂(n) steps → O(log n). This is binary search.',
-    },
-    {
-      id: 'c-q4',
-      type: 'fill',
-      prompt: 'Simplify: O(n² + n log n + n). Answer with the dominant class.',
-      answer: 'O(n²)',
-      explanation: 'n² grows faster than n log n and n, so it dominates.',
-    },
-  ],
-
   practice: [
     {
       id: 'c-p1',

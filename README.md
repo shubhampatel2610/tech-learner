@@ -1,4 +1,4 @@
-# DSA Learner
+# TechPath
 
 ## The problem
 
@@ -6,7 +6,7 @@ Most DSA prep material is either a wall of text (cheatsheets, blog posts) or a w
 
 ## What this is
 
-DSA Learner is an interactive platform that takes Data Structures & Algorithms from first principles to interview-ready. Every topic — from Big-O complexity to graphs and dynamic programming — is taught the same way: a clear explanation, an interactive visualizer you can manipulate, a step-by-step dry run, worked examples, common mistakes/edge cases, a quiz, and practice problems. Progress (XP, streaks, completion, bookmarks) is tracked automatically as you go.
+TechPath is an interactive platform that takes Data Structures & Algorithms from first principles to interview-ready. Every topic — from Big-O complexity to graphs and dynamic programming — is taught the same way: a clear explanation, an interactive visualizer you can manipulate, a step-by-step dry run, worked examples, and common mistakes/edge cases.
 
 ## What's covered
 
@@ -17,9 +17,7 @@ Each topic page includes:
 - A color-coded time/space complexity reference
 - Step-through dry runs and multi-language worked examples
 - Advantages, disadvantages, pitfalls, and interview tips
-- Flashcards, an auto-graded quiz, and practice problems
-
-A dashboard tracks XP, day streaks, per-topic completion, a study heatmap, and bookmarks — all persisted locally in the browser.
+- Flashcards and practice problems
 
 ## How to run
 

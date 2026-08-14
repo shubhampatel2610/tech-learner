@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { PreferencesState, ThemeMode } from '@/types/progress.types';
+import type { PreferencesState, ThemeMode } from '@/types/preferences.types';
 
 const initialState: PreferencesState = {
   theme: 'dark',
