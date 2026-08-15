@@ -14,6 +14,7 @@ export const APP = {
 
 export const ROUTES = {
   home: '/',
+  git: '/git',
   topic: (slug: string) => `/topics/${slug}`,
 } as const;
 
@@ -21,6 +22,7 @@ export const STORAGE_KEY = 'techpath:v1';
 
 export const NAV_LINKS = [
   { label: 'DSA', href: ROUTES.home, icon: 'pi pi-book' },
+  { label: 'Git', href: ROUTES.git, icon: 'pi pi-github' },
 ] as const;
 
 export const DIFFICULTY_META = {

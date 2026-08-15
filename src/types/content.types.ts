@@ -9,6 +9,9 @@
 
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced';
 
+/** Which learning track a topic belongs to. Rendered as separate home-page sections. */
+export type TopicCategory = 'DSA' | 'Git';
+
 export type ComplexityClass =
   | 'O(1)'
   | 'O(log n)'
@@ -64,7 +67,7 @@ export interface DryRun {
 }
 
 export interface CodeSample {
-  language: 'python' | 'javascript' | 'typescript' | 'java' | 'cpp';
+  language: 'python' | 'javascript' | 'typescript' | 'java' | 'cpp' | 'bash';
   label: string;
   code: string;
 }
@@ -129,8 +132,10 @@ export interface TopicSection {
 
 export interface Topic {
   slug: string;
-  /** Cheatsheet ordering (1..15). */
+  /** Cheatsheet ordering (1..15 for DSA, 16+ for other tracks). */
   order: number;
+  /** Learning track this topic belongs to. Omitted = 'DSA' (keeps the original 15 topic files untouched). */
+  category?: TopicCategory;
   title: string;
   tagline: string;
   difficulty: Difficulty;
@@ -166,6 +171,7 @@ export interface Topic {
 export interface TopicMeta {
   slug: string;
   order: number;
+  category: TopicCategory;
   title: string;
   tagline: string;
   difficulty: Difficulty;
