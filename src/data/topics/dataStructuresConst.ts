@@ -236,39 +236,6 @@ def k_largest(nums, k):
     { id: 'ds-f6', front: 'When does a BST degrade to O(n)?', back: 'When it becomes unbalanced - e.g. inserting already-sorted data creates a linked list.' },
   ],
 
-  quiz: [
-    {
-      id: 'ds-q1',
-      type: 'mcq',
-      prompt: 'You need O(1) membership tests on a large set of IDs. Best structure?',
-      options: ['Sorted array', 'Linked list', 'Hash set', 'Min-heap'],
-      answerIndex: 2,
-      explanation: 'A hash set gives average O(1) lookup. Sorted array is O(log n), list is O(n), heap does not support membership.',
-    },
-    {
-      id: 'ds-q2',
-      type: 'boolean',
-      prompt: 'A heap keeps all its elements in fully sorted order.',
-      answer: false,
-      explanation: 'A heap only guarantees the root is the min/max. Siblings are unordered relative to each other.',
-    },
-    {
-      id: 'ds-q3',
-      type: 'mcq',
-      prompt: 'BFS traversal of a graph relies on which structure?',
-      options: ['Stack', 'Queue', 'Heap', 'BST'],
-      answerIndex: 1,
-      explanation: 'BFS uses a FIFO queue to visit nodes level by level. DFS uses a stack (or recursion).',
-    },
-    {
-      id: 'ds-q4',
-      type: 'fill',
-      prompt: 'A doubly linked list plus a hash map is the classic implementation of which cache?',
-      answer: 'LRU',
-      explanation: 'LRU cache: the list tracks recency order (O(1) move), the map gives O(1) key lookup.',
-    },
-  ],
-
   practice: [
     {
       id: 'ds-p1',

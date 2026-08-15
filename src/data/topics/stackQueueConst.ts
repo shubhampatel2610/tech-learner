@@ -252,39 +252,6 @@ def max_sliding_window(nums, k):
     { id: 'sq-f6', front: 'What does a monotonic deque give you for sliding-window max?', back: 'O(n) total instead of O(nk): the front of the deque is always the current window\'s max, maintained by evicting smaller values from the back.' },
   ],
 
-  quiz: [
-    {
-      id: 'sq-q1',
-      type: 'mcq',
-      prompt: 'You need to process requests in the order they arrived. Which structure?',
-      options: ['Stack', 'Queue', 'Monotonic stack', 'Deque used as a stack'],
-      answerIndex: 1,
-      explanation: 'FIFO order = queue. A stack would process the most recent request first, which is the opposite of "arrival order."',
-    },
-    {
-      id: 'sq-q2',
-      type: 'boolean',
-      prompt: 'Popping from the front of a plain array (shifting all remaining elements) is an O(1) operation.',
-      answer: false,
-      explanation: 'Removing index 0 from an array requires shifting every subsequent element left - O(n). A real queue implementation avoids this with a circular buffer or linked list.',
-    },
-    {
-      id: 'sq-q3',
-      type: 'mcq',
-      prompt: '"Find, for every element, the next element to its right that is greater" is solved in O(n) by which pattern?',
-      options: ['Binary search', 'Monotonic stack', 'Prefix sum', 'Kadane\'s algorithm'],
-      answerIndex: 1,
-      explanation: 'This is the canonical Next Greater Element problem - a decreasing monotonic stack solves it in one O(n) pass.',
-    },
-    {
-      id: 'sq-q4',
-      type: 'fill',
-      prompt: 'A stack is a deque restricted to pushes and pops at ___ end(s).',
-      answer: 'one',
-      explanation: 'A deque generalizes both stack (one end) and queue (push one end, pop the other).',
-    },
-  ],
-
   practice: [
     {
       id: 'sq-p1',

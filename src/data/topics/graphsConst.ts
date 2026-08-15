@@ -294,39 +294,6 @@ def dijkstra(n, adj, src):
     { id: 'g-f7', front: 'Time complexity of BFS/DFS on a graph?', back: 'O(V + E) - every vertex visited once (guarded by visited set), every edge examined once.' },
   ],
 
-  quiz: [
-    {
-      id: 'g-q1',
-      type: 'mcq',
-      prompt: 'A graph has 1,000 vertices and only 2,000 edges. Which representation should you default to?',
-      options: ['Adjacency matrix', 'Adjacency list', 'Either - no difference', 'Neither - use a hash set of edges only'],
-      answerIndex: 1,
-      explanation: 'This is a sparse graph (E ≪ V²). An adjacency list uses O(V+E) space; a matrix would waste memory on 1,000² = 1,000,000 mostly-empty cells.',
-    },
-    {
-      id: 'g-q2',
-      type: 'boolean',
-      prompt: "Dijkstra's algorithm works correctly on graphs with negative edge weights, just more slowly than Bellman-Ford.",
-      answer: false,
-      explanation: "Dijkstra's greedy assumption (a popped vertex's distance is final) breaks with negative weights and can produce an incorrect result, not just a slower correct one. Use Bellman-Ford instead.",
-    },
-    {
-      id: 'g-q3',
-      type: 'mcq',
-      prompt: 'Which algorithm both produces a valid build order AND detects impossible (cyclic) dependencies in the same pass?',
-      options: ['Dijkstra', 'DFS alone, no extra bookkeeping', "Kahn's algorithm (BFS-based topological sort)", "Prim's algorithm"],
-      answerIndex: 2,
-      explanation: "Kahn's algorithm processes in-degree-0 vertices; if any vertices are never processed, a cycle exists - a free cycle check alongside the ordering itself.",
-    },
-    {
-      id: 'g-q4',
-      type: 'fill',
-      prompt: 'Fill in: a Minimum Spanning Tree connects all V vertices using exactly ___ edges.',
-      answer: 'V - 1',
-      explanation: 'A tree connecting V vertices always has exactly V-1 edges - one more edge would create a cycle, one fewer would leave it disconnected.',
-    },
-  ],
-
   practice: [
     {
       id: 'g-p1',

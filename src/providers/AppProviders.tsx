@@ -4,7 +4,6 @@ import { useRef, type ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { PrimeReactProvider } from 'primereact/api';
 import { makeStore, loadPersisted, type AppStore } from '@/store';
-import { hydrate } from '@/store/slices/progressSlice';
 import { hydratePrefs } from '@/store/slices/preferencesSlice';
 import { ThemeController } from './ThemeController';
 
@@ -18,7 +17,6 @@ export function AppProviders({ children }: { children: ReactNode }) {
   if (!storeRef.current) {
     const store = makeStore();
     const persisted = loadPersisted();
-    if (persisted?.progress) store.dispatch(hydrate(persisted.progress));
     if (persisted?.preferences) store.dispatch(hydratePrefs(persisted.preferences));
     storeRef.current = store;
   }

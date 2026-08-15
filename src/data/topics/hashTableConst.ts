@@ -232,39 +232,6 @@ def group_anagrams(strs):
     { id: 'ht-f6', front: 'The single-pass complement trick (Two Sum) - why is it O(n) not O(n²)?', back: 'Checking whether target-num was already seen is an O(1) hash-map lookup, done once per element, instead of comparing every pair.' },
   ],
 
-  quiz: [
-    {
-      id: 'ht-q1',
-      type: 'mcq',
-      prompt: 'What is the primary weakness of a hash table compared to a balanced BST?',
-      options: ['Slower average lookup', 'No ordering / cannot do range queries or sorted iteration', 'Cannot store string keys', 'Always O(n) space'],
-      answerIndex: 1,
-      explanation: 'A hash table trades away ordering entirely for O(1) average access - a BST is the right tool when you need sorted iteration or "next largest/smallest" queries.',
-    },
-    {
-      id: 'ht-q2',
-      type: 'boolean',
-      prompt: 'A hash table\'s worst-case lookup time is always O(1), regardless of the hash function quality.',
-      answer: false,
-      explanation: 'Worst-case is O(n) - if many keys collide into one bucket (poor hash function or adversarial input), lookup degrades to scanning a long chain.',
-    },
-    {
-      id: 'ht-q3',
-      type: 'mcq',
-      prompt: 'Two Sum solved with a single-pass hash map has what complexity, versus the brute-force nested loop?',
-      options: ['O(n) vs O(n log n)', 'O(n) vs O(n²)', 'O(log n) vs O(n)', 'O(1) vs O(n)'],
-      answerIndex: 1,
-      explanation: 'The hash-map approach checks each complement in O(1) during a single O(n) pass; brute force compares every pair, O(n²).',
-    },
-    {
-      id: 'ht-q4',
-      type: 'fill',
-      prompt: 'Fill in: when a hash table\'s load factor crosses its threshold, it performs a ___, which is O(n) but amortized O(1) per insert overall.',
-      answer: 'resize (rehash)',
-      explanation: 'The bucket array grows (typically doubles) and every existing entry is rehashed into new bucket positions - rare enough that its cost amortizes away.',
-    },
-  ],
-
   practice: [
     {
       id: 'ht-p1',

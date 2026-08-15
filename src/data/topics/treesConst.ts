@@ -225,39 +225,6 @@ def max_depth(root):
     { id: 't-f7', front: 'Space complexity of any recursive tree traversal?', back: 'O(h), the tree\'s height - that is how deep the call stack goes. O(log n) balanced, O(n) degenerate.' },
   ],
 
-  quiz: [
-    {
-      id: 't-q1',
-      type: 'mcq',
-      prompt: 'Which traversal would you use to print a tree row by row, top to bottom?',
-      options: ['Preorder', 'Inorder', 'Postorder', 'Level order (BFS)'],
-      answerIndex: 3,
-      explanation: 'Level order uses a queue to visit nodes depth by depth, which is exactly a row-by-row print. The three DFS orders do not group by depth.',
-    },
-    {
-      id: 't-q2',
-      type: 'boolean',
-      prompt: 'A binary tree where every node\'s immediate children satisfy left < node < right is guaranteed to be a valid BST.',
-      answer: false,
-      explanation: 'The BST invariant must hold against ALL ancestors, not just the immediate parent. A node can satisfy its parent locally while still violating a grandparent\'s bound.',
-    },
-    {
-      id: 't-q3',
-      type: 'mcq',
-      prompt: 'What is the time complexity of finding the LCA of two nodes in a balanced BST?',
-      options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
-      answerIndex: 1,
-      explanation: 'The BST ordering lets you discard a subtree at each step (go left if both values are smaller, right if both are larger) - O(h) = O(log n) when balanced.',
-    },
-    {
-      id: 't-q4',
-      type: 'fill',
-      prompt: 'Fill in: computing a tree\'s diameter in a single bottom-up pass is O(___), versus O(n²) for the naive recompute-height-per-node approach.',
-      answer: 'O(n)',
-      explanation: 'Height and the best path-through-this-node value can both be computed in the same O(n) bottom-up recursion, with no repeated work.',
-    },
-  ],
-
   practice: [
     {
       id: 't-p1',

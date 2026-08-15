@@ -247,39 +247,6 @@ def subarray_sum(nums, k):
     { id: 'as-f6', front: 'Palindrome check without allocating a reversed string?', back: 'Two pointers converging from both ends, O(n) time, O(1) space.' },
   ],
 
-  quiz: [
-    {
-      id: 'as-q1',
-      type: 'mcq',
-      prompt: "What does Kadane's algorithm do when the running sum becomes negative?",
-      options: ['Sets it to 0 and continues', 'Restarts the subarray at the current element', 'Throws an error', 'Reverses the array'],
-      answerIndex: 1,
-      explanation: 'When curr + x is worse than x alone, the algorithm effectively restarts the subarray at the current element (curr = x), because carrying negative history only hurts.',
-    },
-    {
-      id: 'as-q2',
-      type: 'boolean',
-      prompt: 'A prefix sum array lets you answer any range-sum query in O(1) after an O(n) build.',
-      answer: true,
-      explanation: 'sum(l, r) = prefix[r] - prefix[l-1] is a single subtraction regardless of range size.',
-    },
-    {
-      id: 'as-q3',
-      type: 'mcq',
-      prompt: 'Which is the correct complexity of naively concatenating a string inside a loop that runs n times, in Python?',
-      options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(1)'],
-      answerIndex: 2,
-      explanation: 'Each += creates a new immutable string of growing length, so total work is 1+2+...+n = O(n²).',
-    },
-    {
-      id: 'as-q4',
-      type: 'fill',
-      prompt: "Fill in: two pointers converging on a sorted array turn an O(n²) pair scan into O(___).",
-      answer: 'O(n)',
-      explanation: 'Each pointer moves at most n times total across the whole run, giving a single linear pass.',
-    },
-  ],
-
   practice: [
     {
       id: 'as-p1',

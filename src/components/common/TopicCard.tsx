@@ -5,19 +5,15 @@ import type { TopicMeta } from '@/types/content.types';
 import { Badge } from '@/components/ui/Badge';
 import { ROUTES, DIFFICULTY_META } from '@/lib/appConstants';
 import { formatMinutes } from '@/lib/utils';
-import { useAppSelector } from '@/store/hooks';
 import { cn } from '@/lib/utils';
 
 type Tone = 'success' | 'warning' | 'danger';
 
 /**
- * A single topic entry on the roadmap. Full topics link through and show live
- * completion; roadmap placeholders render as non-clickable "planned" cards.
+ * A single topic entry on the roadmap. Full topics link through; roadmap
+ * placeholders render as non-clickable "planned" cards.
  */
 export function TopicCard({ meta, available }: { meta: TopicMeta; available: boolean }) {
-  const progress = useAppSelector((s) => s.progress.byTopic[meta.slug]);
-  const completed = progress?.completedSections.length ?? 0;
-  const bookmarked = progress?.bookmarked ?? false;
   const diffTone = DIFFICULTY_META[meta.difficulty].color as Tone;
 
   const inner = (
@@ -32,7 +28,6 @@ export function TopicCard({ meta, available }: { meta: TopicMeta; available: boo
           <i className={`${meta.icon} text-sm`} aria-hidden />
         </div>
         <div className="flex items-center gap-1.5">
-          {bookmarked && <i className="pi pi-bookmark-fill text-xs text-accent" aria-hidden />}
           <span className="font-mono text-[11px] text-faint">#{meta.order}</span>
         </div>
       </div>
@@ -48,16 +43,7 @@ export function TopicCard({ meta, available }: { meta: TopicMeta; available: boo
           <i className="pi pi-clock text-[10px]" aria-hidden />
           {formatMinutes(meta.estMinutes)}
         </span>
-        {available ? (
-          completed > 0 && (
-            <span className="chip border-accent/30 text-accent">
-              <i className="pi pi-check text-[10px]" aria-hidden />
-              {completed} done
-            </span>
-          )
-        ) : (
-          <span className="chip">Planned</span>
-        )}
+        {!available && <span className="chip">Planned</span>}
       </div>
     </div>
   );

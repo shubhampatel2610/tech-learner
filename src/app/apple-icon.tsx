@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 
-/** iOS home-screen icon - same node-graph mark as `icon.tsx`, scaled up. */
+/** iOS home-screen icon - same winding-path mark as `icon.tsx`, scaled up. */
 export default function AppleIcon() {
   return new ImageResponse(
     (
@@ -15,10 +15,15 @@ export default function AppleIcon() {
           </linearGradient>
         </defs>
         <rect width="32" height="32" rx="8" fill="url(#grad)" />
-        <circle cx="10" cy="11" r="2.6" fill="#04120d" />
-        <circle cx="22" cy="11" r="2.6" fill="#04120d" />
-        <circle cx="16" cy="22" r="2.6" fill="#04120d" />
-        <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#04120d" strokeWidth="1.6" strokeLinecap="round" />
+        <path
+          d="M7 25C7 25 12 25 14 20C16 15 20 16 21 12C22 8 25 8 25 7"
+          stroke="#04120d"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <circle cx="7" cy="25" r="2.4" fill="#04120d" />
+        <circle cx="25" cy="7" r="2.4" fill="#04120d" />
       </svg>
     ),
     { ...size },

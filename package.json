@@ -1,8 +1,8 @@
 {
-  "name": "dsa-learner",
+  "name": "techpath",
   "version": "1.0.0",
   "private": true,
-  "description": "DSA Learner - an interactive, engineering-focused platform for learning Data Structures & Algorithms.",
+  "description": "TechPath - an interactive, engineering-focused platform for learning Data Structures & Algorithms.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

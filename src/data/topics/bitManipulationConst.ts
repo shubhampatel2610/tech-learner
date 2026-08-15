@@ -249,39 +249,6 @@ A bitmask is also a compact, O(1)-per-operation **visited set** when the univers
     { id: 'bm-f6', front: 'How many possible subsets does an n-item set have, and how does a bitmask represent one?', back: '2ⁿ subsets. A bitmask is an n-bit integer where bit i = 1 means item i is included - integers 0 to 2ⁿ-1 enumerate every subset.' },
   ],
 
-  quiz: [
-    {
-      id: 'bm-q1',
-      type: 'mcq',
-      prompt: 'Which single expression toggles bit i of x, leaving every other bit unchanged?',
-      options: ['x | (1 << i)', 'x & ~(1 << i)', 'x ^ (1 << i)', 'x >> i'],
-      answerIndex: 2,
-      explanation: 'XOR flips exactly the masked bit (since 1^1=0 and 1^0=1) while leaving other positions unchanged (since anything ^ 0 = itself).',
-    },
-    {
-      id: 'bm-q2',
-      type: 'boolean',
-      prompt: "Brian Kernighan's algorithm for counting set bits always takes exactly (word width) iterations, e.g. 32 for a 32-bit integer.",
-      answer: false,
-      explanation: 'It takes exactly as many iterations as there are SET bits (popcount), not the full word width - a sparse number with 3 set bits finishes in 3 iterations regardless of word size.',
-    },
-    {
-      id: 'bm-q3',
-      type: 'mcq',
-      prompt: 'An array has every value appearing exactly twice except one value appearing once. Best approach to find it?',
-      options: ['Sort and scan for a mismatch - O(n log n)', 'Hash map of counts - O(n) time, O(n) space', 'XOR the whole array - O(n) time, O(1) space', 'Binary search - O(log n)'],
-      answerIndex: 2,
-      explanation: "XOR-ing the entire array is both time- and space-optimal: pairs cancel to 0, leaving only the unpaired value, with no extra memory needed.",
-    },
-    {
-      id: 'bm-q4',
-      type: 'fill',
-      prompt: 'Fill in: a set of n items has exactly 2^___ possible subsets, each representable as an n-bit integer.',
-      answer: 'n',
-      explanation: 'Each of the n items is independently either included or excluded, giving 2ⁿ total combinations - exactly the range of an n-bit integer.',
-    },
-  ],
-
   practice: [
     {
       id: 'bm-p1',

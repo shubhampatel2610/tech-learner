@@ -291,39 +291,6 @@ def merge_k_lists(lists):
     { id: 'h-f7', front: 'Can you search a heap for an arbitrary value in O(log n), like a BST?', back: 'No - a heap has no left-smaller/right-larger ordering, so arbitrary search is O(n), same as an unsorted array.' },
   ],
 
-  quiz: [
-    {
-      id: 'h-q1',
-      type: 'mcq',
-      prompt: 'What is the time complexity of extracting the minimum from a min-heap of n elements?',
-      options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'],
-      answerIndex: 1,
-      explanation: 'Extract-min moves the last leaf to the root, then sifts it down - bounded by the tree height, O(log n).',
-    },
-    {
-      id: 'h-q2',
-      type: 'boolean',
-      prompt: 'A min-heap, read left to right at the array level, produces its elements in sorted order.',
-      answer: false,
-      explanation: 'A heap only guarantees parent ≤ children - siblings and the array\'s linear order are not sorted. Only heap-sort\'s repeated extraction produces sorted output.',
-    },
-    {
-      id: 'h-q3',
-      type: 'mcq',
-      prompt: 'You need the k largest elements out of a 10-million-element stream, k = 20. Best approach?',
-      options: ['Sort everything - O(n log n)', 'Max-heap of size 20 - O(n log 20)', 'Min-heap of size 20 - O(n log 20)', 'Linear scan for a single running max - O(n)'],
-      answerIndex: 2,
-      explanation: 'A min-heap capped at size 20: push each value, pop the smallest whenever the heap exceeds 20. Its root ends up being the smallest of the top 20 - exactly what you want, in O(n log k).',
-    },
-    {
-      id: 'h-q4',
-      type: 'fill',
-      prompt: 'Fill in: heapify builds a valid heap from n arbitrary elements in O(___) time, faster than n sequential inserts.',
-      answer: 'O(n)',
-      explanation: 'Sifting down from the last non-leaf backward to the root sums to linear total work across the whole tree, beating the O(n log n) of n individual inserts.',
-    },
-  ],
-
   practice: [
     {
       id: 'h-p1',

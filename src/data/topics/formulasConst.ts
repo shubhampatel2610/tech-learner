@@ -238,39 +238,6 @@ Each recursive call halves n, exactly like binary search - so the recursion dept
     { id: 'fm-f6', front: 'Why is a loop that does i work on iteration i overall O(n²)?', back: 'Total work is 0+1+...+(n-1) = n(n-1)/2, which is O(n²) - the triangular-sum formula, not just "two nested loops."' },
   ],
 
-  quiz: [
-    {
-      id: 'fm-q1',
-      type: 'mcq',
-      prompt: 'You need to choose 3 people from 8 for an unordered committee. Which formula?',
-      options: ['8P3 (permutation)', '8C3 (combination)', '8!', '3^8'],
-      answerIndex: 1,
-      explanation: 'A committee has no distinct roles, so order does not matter - that is exactly what nCr counts, not nPr.',
-    },
-    {
-      id: 'fm-q2',
-      type: 'boolean',
-      prompt: 'O(log₂ n) and O(log₁₀ n) describe different complexity classes.',
-      answer: false,
-      explanation: 'They differ only by a constant factor (change of base), and Big-O ignores constant factors - they are the same class, universally written "O(log n)".',
-    },
-    {
-      id: 'fm-q3',
-      type: 'mcq',
-      prompt: 'What is the time complexity of computing x^n via repeated squaring, versus naive repeated multiplication?',
-      options: ['O(n) vs O(n²)', 'O(log n) vs O(n)', 'O(1) vs O(log n)', 'O(n) vs O(log n) - naive is faster'],
-      answerIndex: 1,
-      explanation: 'Repeated squaring halves the exponent each step (O(log n) multiplications); naive multiplication does one multiply per unit of the exponent (O(n)).',
-    },
-    {
-      id: 'fm-q4',
-      type: 'fill',
-      prompt: 'Fill in the formula: sum of the first n natural numbers = n(n+1) / ___.',
-      answer: '2',
-      explanation: 'Pairing the forward and reverse sequences gives n pairs each summing to (n+1), for a total of n(n+1), then divide by 2 since each number was counted in one pairing.',
-    },
-  ],
-
   practice: [
     {
       id: 'fm-p1',

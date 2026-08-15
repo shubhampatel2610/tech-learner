@@ -7,6 +7,7 @@ import { NAV_LINKS, APP, ROUTES } from '@/lib/appConstants';
 import { AppLogo } from '@/components/common/AppLogo';
 import { ThemeToggle } from '@/components/common/ThemeToggle';
 import { useScrolled } from '@/hooks/useScrolled';
+import { getTopic } from '@/data/topics';
 import { cn } from '@/lib/utils';
 
 export function NavBar() {
@@ -18,6 +19,8 @@ export function NavBar() {
 
   /** Topic pages are long - once scrolled, surface a way back without hunting for the in-page link. */
   const showBack = scrolled && pathname.startsWith('/topics/');
+  const currentTopic = showBack ? getTopic(pathname.split('/')[2] ?? '') : undefined;
+  const backHref = currentTopic?.category === 'Git' ? ROUTES.git : ROUTES.home;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur-md">
@@ -32,7 +35,7 @@ export function NavBar() {
               className="overflow-hidden"
             >
               <Link
-                href={ROUTES.home}
+                href={backHref}
                 aria-label="Back to all topics"
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-surface-2 text-muted transition-colors hover:border-accent/40 hover:text-text"
               >

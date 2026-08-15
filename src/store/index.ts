@@ -1,11 +1,9 @@
 import { configureStore, type Middleware } from '@reduxjs/toolkit';
-import progressReducer from './slices/progressSlice';
 import preferencesReducer from './slices/preferencesSlice';
 import { STORAGE_KEY } from '@/lib/appConstants';
-import type { ProgressState, PreferencesState } from '@/types/progress.types';
+import type { PreferencesState } from '@/types/preferences.types';
 
 interface PersistShape {
-  progress: ProgressState;
   preferences: PreferencesState;
 }
 
@@ -30,7 +28,6 @@ const persistMiddleware: Middleware = (store) => {
     handle = setTimeout(() => {
       const state = store.getState() as RootState;
       const snapshot: PersistShape = {
-        progress: state.progress,
         preferences: state.preferences,
       };
       try {
@@ -46,7 +43,6 @@ const persistMiddleware: Middleware = (store) => {
 export const makeStore = () =>
   configureStore({
     reducer: {
-      progress: progressReducer,
       preferences: preferencesReducer,
     },
     middleware: (getDefault) => getDefault().concat(persistMiddleware),

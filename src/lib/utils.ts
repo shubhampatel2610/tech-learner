@@ -10,11 +10,6 @@ export function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
-/** ISO day key (YYYY-MM-DD) in local time. */
-export function dayKey(date: Date = new Date()): string {
-  return date.toISOString().slice(0, 10);
-}
-
 /** Fisher–Yates shuffle returning a new array. */
 export function shuffle<T>(input: readonly T[]): T[] {
   const arr = [...input];
@@ -36,10 +31,4 @@ export function formatMinutes(total: number): string {
   const h = Math.floor(total / 60);
   const m = total % 60;
   return m ? `${h}h ${String(m).padStart(2, '0')}m` : `${h}h`;
-}
-
-/** Percentage 0..100, rounded. */
-export function pct(part: number, whole: number): number {
-  if (whole <= 0) return 0;
-  return Math.round((part / whole) * 100);
 }
