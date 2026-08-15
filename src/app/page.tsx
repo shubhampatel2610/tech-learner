@@ -3,17 +3,19 @@
 import { useMemo, useState } from 'react';
 import { ALL_TOPIC_META, FULL_SLUGS, FULL_TOPICS, TOTAL_SECTIONS } from '@/data/topics';
 import { TopicCard } from '@/components/common/TopicCard';
+import { DifficultyFilter } from '@/components/common/DifficultyFilter';
+import { StatItem } from '@/components/common/StatItem';
 import { APP } from '@/lib/appConstants';
-import { cn } from '@/lib/utils';
 import type { Difficulty } from '@/types/content.types';
-
-const FILTERS: Array<'All' | Difficulty> = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
 export default function HomePage() {
   const [filter, setFilter] = useState<'All' | Difficulty>('All');
 
-  const topics = useMemo(
-    () => (filter === 'All' ? ALL_TOPIC_META : ALL_TOPIC_META.filter((t) => t.difficulty === filter)),
+  const dsaTopics = useMemo(
+    () =>
+      ALL_TOPIC_META.filter(
+        (t) => t.category === 'DSA' && (filter === 'All' || t.difficulty === filter),
+      ),
     [filter],
   );
 
@@ -36,9 +38,9 @@ export default function HomePage() {
           <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">{APP.description}</p>
 
           <div className="mt-5 flex flex-wrap gap-4 text-xs text-muted">
-            <Stat value={`${FULL_TOPICS.length}`} label="deep-dive topics" />
-            <Stat value={`${TOTAL_SECTIONS}`} label="learning sections" />
-            <Stat value="Interactive" label="visualizers + quizzes" />
+            <StatItem value={`${FULL_TOPICS.length}`} label="deep-dive topics" />
+            <StatItem value={`${TOTAL_SECTIONS}`} label="learning sections" />
+            <StatItem value="Interactive" label="visualizers + quizzes" />
           </div>
         </div>
       </section>
@@ -50,37 +52,15 @@ export default function HomePage() {
             <h2 className="text-lg font-semibold text-text">Learning roadmap</h2>
             <p className="text-xs text-muted">Follow the cheatsheet order, or jump to what you need.</p>
           </div>
-          <div className="flex gap-1 rounded-md border border-border bg-surface p-0.5">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={cn(
-                  'rounded px-2.5 py-1 text-xs font-medium transition-colors',
-                  filter === f ? 'bg-surface-2 text-text' : 'text-muted hover:text-text',
-                )}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+          <DifficultyFilter filter={filter} onChange={setFilter} />
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {topics.map((meta) => (
+          {dsaTopics.map((meta) => (
             <TopicCard key={meta.slug} meta={meta} available={FULL_SLUGS.has(meta.slug)} />
           ))}
         </div>
       </section>
-    </div>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="flex items-baseline gap-1.5">
-      <span className="text-base font-semibold text-text">{value}</span>
-      <span>{label}</span>
     </div>
   );
 }

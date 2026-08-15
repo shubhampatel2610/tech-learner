@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { FULL_TOPICS, getTopic } from '@/data/topics';
+import { ALL_FULL_TOPICS, getTopic } from '@/data/topics';
 import { TopicView } from '@/components/module/TopicView';
 
 interface Params {
@@ -13,9 +13,9 @@ interface Params {
  */
 export const dynamicParams = false;
 
-/** Pre-render all full topics at build time. */
+/** Pre-render all full topics (every track) at build time. */
 export function generateStaticParams() {
-  return FULL_TOPICS.map((t) => ({ slug: t.slug }));
+  return ALL_FULL_TOPICS.map((t) => ({ slug: t.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {

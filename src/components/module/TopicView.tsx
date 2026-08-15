@@ -20,13 +20,15 @@ type Tone = 'success' | 'warning' | 'danger';
 
 export function TopicView({ topic }: { topic: Topic }) {
   const diffTone = DIFFICULTY_META[topic.difficulty].color as Tone;
+  const backHref = topic.category === 'Git' ? ROUTES.git : ROUTES.home;
+  const backLabel = topic.category === 'Git' ? 'All Git days' : 'All topics';
 
   return (
     <div className="mx-auto max-w-7xl space-y-8">
       {/* Breadcrumb + header */}
       <div>
-        <Link href={ROUTES.home} className="mb-4 inline-flex items-center gap-1 text-xs text-muted hover:text-text">
-          <i className="pi pi-arrow-left text-[10px]" aria-hidden /> All topics
+        <Link href={backHref} className="mb-4 inline-flex items-center gap-1 text-xs text-muted hover:text-text">
+          <i className="pi pi-arrow-left text-[10px]" aria-hidden /> {backLabel}
         </Link>
 
         <div className="flex gap-3">
